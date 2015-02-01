@@ -1,0 +1,4 @@
+asset 'angular'
+asset 'bootstrap    '
+asset 'ng-token-auth'
+asset 'angular-route'

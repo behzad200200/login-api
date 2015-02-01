@@ -1,0 +1,13 @@
+<nav class="navbar navbar-default navbar-fixed-top" >
+    <div class="navbar-header">
+        <a href="#" class="navbar-brand">Project name</a>
+        {{user}}
+    </div>
+    <a class="navbar-brand" href="#">Brand</a>
+        <ul class="nav navbar-nav navbar-right" style="margin-right: 20px">
+            <li><a ng-if="!user.signedIn"  go-click="/login">Login</a></li>
+            <li><a ng-if="!user.signedIn" go-click="/view1">Sign Up</a></li>
+            <li><a ng-if="user.signedIn" ng-click="signOut()" href="">Logout</a></li>
+        </ul>
+    </div>
+</nav>

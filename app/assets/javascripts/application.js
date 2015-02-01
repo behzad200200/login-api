@@ -12,5 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require angular/angular.js
+//= require angular-cookie/angular-cookie.js
+//= require ng-token-auth/dist/ng-token-auth.js
+//= require angular-route/angular-route.js
+//= require_tree ./app/directivies
 //= require_tree .
+

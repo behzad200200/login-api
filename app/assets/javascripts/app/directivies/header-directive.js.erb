@@ -1,0 +1,10 @@
+angular.module('myApp')
+    .directive('mondoHeader', function(){
+        return{
+            restrict: 'E',
+            templateUrl: '<%= asset_path('shared/header.html') %>',
+            controller: ['$scope', '$auth', '$rootScope', function($scope, $auth, $rootScope){
+
+            }]
+        }
+    })

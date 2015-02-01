@@ -2,6 +2,8 @@ source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails_12factor', group: :production
+gem 'bower-rails'
 gem 'pry'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'devise'
