@@ -4,14 +4,15 @@
 angular.module('myApp', [
     'ngRoute',
     'ng-token-auth',
-    'myApp.view1'
+    'myApp.view1',
+    'myApp.login'
 ]).
     config(['$routeProvider', function($routeProvider) {
         $routeProvider.otherwise({redirectTo: '/view1'});
     }])
     .config(['$authProvider', function($authProvider){
         $authProvider.configure({
-            apiUrl: 'http://127.0.0.1:3000'
+            apiUrl: ''
         })
     }])
     .controller('ApplicationController', ['$rootScope','$auth', function($rootScope, $auth){
@@ -53,7 +54,7 @@ angular.module('myApp', [
             link: link
         }
     }])
-    .directive( 'goClick', function ( $location ) {
+    .directive( 'goClick',['$location', function ( $location ) {
         return function ( scope, element, attrs ) {
             var path;
 
@@ -67,4 +68,4 @@ angular.module('myApp', [
                 });
             });
         };
-    });
+    }]);
