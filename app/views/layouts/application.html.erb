@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+<html>
 <head>
   <title>LoginApi</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -14,7 +14,7 @@
   <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
   <%= csrf_meta_tags %>
 </head>
-
-<%= yield %>
-
+<div ng-app="myApp">
+  <%= yield %>
+</div>
 </html>
