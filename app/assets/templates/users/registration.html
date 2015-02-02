@@ -1,0 +1,17 @@
+<div class="col-sm-4 col-sm-offset-2">
+    <form ng-submit="register(user_attributes)" role="form" ng-init="registrationForm = {}">
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" ng-model="user_attributes.email" required="required" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label>password</label>
+            <input type="password" name="password" ng-model="user_attributes.password" required="required" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label>password confirmation</label>
+            <input type="password" name="password_confirmation" ng-model="user_attributes.password_confirmation" required="required" class="form-control"/>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">Register</button>
+    </form>
+</div>

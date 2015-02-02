@@ -1,0 +1,20 @@
+angular.module('myApp.profile', ['ngRoute'])
+.config([
+            '$routeProvider'
+            ($routeProvider)->
+                $routeProvider.when('/profile',
+                    templateUrl: '<%= asset_path('users/view1.html') %>'
+                    controller: 'ProfileController'
+                    resolve:
+                        auth:['$auh', ($auth)->
+                            $auth.validateUser()
+                        ]
+                )
+
+        ])
+.controller('ProfileController', [
+            '$auth'
+            '$scope'
+            ($auth, $scope)->
+                $scope
+        ])
