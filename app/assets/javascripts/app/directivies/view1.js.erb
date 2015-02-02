@@ -9,14 +9,21 @@ angular.module('myApp.view1', ['ngRoute'])
   });
 }])
 
-.controller('View1Ctrl', ['$scope', '$auth',function($scope, $auth) {
+.controller('View1Ctrl', ['$scope', '$auth', '$http', function($scope, $auth, $http) {
         $scope.registrationLogin = {};
-        $scope.register = function(registrationLogin){
-            $auth.submitRegistration(registrationLogin)
-                .then(function (res){
+        $scope.user_attributes = {}
+        $scope.register = function(registrationLogin, user_attributes){
+            $http({
+                method: 'POST',
+                url: '/contractors.json',
+                data: {'contractor': registrationLogin,
+                        'user': user_attributes
+                }
+            })
+                .success(function (res){
                     console.log("yessss")
                 })
-                .catch(function (res) {
+                .error(function (res) {
                     console.log(res.data)
                 })
         }
