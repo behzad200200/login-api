@@ -9,11 +9,11 @@ angular.module('myApp', [
     config(['$routeProvider', function($routeProvider) {
         $routeProvider.otherwise({redirectTo: '/view1'});
     }])
-    .config(function($authProvider){
+    .config(['$authProvider', function($authProvider){
         $authProvider.configure({
             apiUrl: 'http://127.0.0.1:3000'
         })
-    })
+    }])
     .controller('ApplicationController', ['$rootScope','$auth', function($rootScope, $auth){
         $rootScope.test_data = 'behzad';
         $rootScope.isLogin = function(){
