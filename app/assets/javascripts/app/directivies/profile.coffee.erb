@@ -2,19 +2,107 @@ angular.module('myApp.profile', ['ngRoute'])
 .config([
             '$routeProvider'
             ($routeProvider)->
-                $routeProvider.when('/profile',
-                    templateUrl: '<%= asset_path('users/view1.html') %>'
-                    controller: 'ProfileController'
+                $routeProvider.when('/new_profile',
+                    templateUrl: '<%= asset_path('users/new_profile.html') %>'
+                    controller: 'NewProfileController'
                     resolve:
-                        auth:['$auh', ($auth)->
+                        auth:['$auth', ($auth)->
                             $auth.validateUser()
                         ]
                 )
-
+                .when('/edit_profile',
+                    templateUrl: '<%= asset_path('users/edit_profile.html') %>'
+                    controller: 'EditProfileController'
+                    resolve:
+                        auth:['$auth','contractorService', ($auth, contractorService)->
+                            $auth.validateUser()
+                        ]
+                )
         ])
-.controller('ProfileController', [
+.controller('NewProfileController', [
             '$auth'
             '$scope'
-            ($auth, $scope)->
-                $scope
+            '$location',
+            'contractorService'
+            ($auth, $scope, $location, contractorService)->
+                $scope.contractor = contractorService.newContractor()
+                $scope.createProfile = (contractor)->
+
+                    contractorService.setNewContractor($scope.contractor, $scope.user)
+                $scope.$on('auth:logout-success',
+                ->
+                    $location.path('/login')
+                )
         ])
+.controller('EditProfileController',[
+            '$scope',
+            'contractorService',
+            '$location'
+            ($scope, contractorService, $location)->
+                $scope.contractor = {}
+                contractorService.checkContractor($scope.user)
+                .success((resp)->
+                    $scope.contractor = resp
+                )
+                .error((resp)->
+                    $location.path('/new_profile')
+                )
+
+                $scope.updateProfile = (contractor)->
+                    contractorService.updateContractor(contractor)
+                    .success((resp)->
+                        $location.path('/profile')
+                    )
+        ])
+.factory('contractorService', [
+            '$http',
+            ($http)->
+                newContractor = ->
+                    contractor={}
+                    http={
+                        url: '/contractors/new'
+                        method: 'GET'
+                    }
+                    $http(http)
+                    .success((resp)->
+                        contractor = resp
+                    )
+                    .error((resp)->
+
+                    )
+                    contractor
+                setNewContractor = (contractor, user)->
+
+                    $http(
+                        url: '/contractors'
+                        method: 'post'
+                        data:
+                            contractor: contractor
+                            user_id: user.id
+                    ).success((resp)->
+
+                    )
+                checkContractor = (user)->
+                    console.log(user);
+                    http={
+                        url: "/contractor"
+                        method: 'get'
+                        params:
+                            user_id: user.id
+                    }
+                    $http(http)
+                updateContractor = (contractor)->
+                    $http(
+                        url: "/contractors/#{contractor.id}"
+                        method: 'put'
+                        data:
+                            contractor: contractor
+                    )
+                newContractor: newContractor
+                setNewContractor: setNewContractor
+                checkContractor: checkContractor
+                updateContractor: updateContractor
+
+
+        ])
+.factory()

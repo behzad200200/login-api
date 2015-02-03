@@ -13,7 +13,7 @@ angular.module('myApp.login', ['ngRoute'])
         $scope.submitLogin = function(credentials){
             $auth.submitLogin(credentials)
                 .then(function(res){
-                    $location.path('/view2')
+
                 })
                 .catch(function(res){
                     $scope.errors = res.errors
