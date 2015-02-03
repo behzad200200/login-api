@@ -70,4 +70,17 @@ angular.module('myApp', [
                 });
             });
         };
-    }]);
+    }])
+.constant('STATE', [
+        'NSW',
+        'WA',
+        'VIC',
+        'TAS',
+        'NT',
+        'ACT',
+        'QLD',
+        'SA',
+        'Asia',
+        'UK',
+        'US'
+    ])

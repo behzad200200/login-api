@@ -37,7 +37,15 @@ class ContractorsController < ApplicationController
   private
 
   def contractor_params
-    params.require(:contractor).permit(:first_name, :last_name, :mobile_phone, :street, :suburb, :state, user_attributes: [:email, :password, :password_confirmation])
+    params.require(:contractor).permit(:first_name,
+                                       :last_name,
+                                       :mobile_phone,
+                                       :street,
+                                       :suburb,
+                                       user_attributes: [:email,
+                                                         :password,
+                                                         :password_confirmation],
+                                       states: [])
   end
 
   def set_user

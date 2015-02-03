@@ -44,17 +44,15 @@ angular.module('myApp.profile', ['ngRoute'])
                 contractorService.checkContractor($scope.user)
                 .success((resp)->
                     $scope.contractor = resp
+                    $scope.states = State.getStates($scope.contractor)
                 )
                 .error((resp)->
                     $location.path('/new_profile')
                 )
-                console.log(State)
-                State.getStates()
-                .success((resp)->
-                    $scope.states = resp.states
-                    console.log($scope.states)
-                )
                 $scope.updateProfile = (contractor)->
+                    selectedStates = State.statesToArray($scope.states)
+                    contractor.states = selectedStates
+                    console.log(contractor)
                     contractorService.updateContractor(contractor)
                     .success((resp)->
                         $location.path('/profile')
@@ -111,15 +109,21 @@ angular.module('myApp.profile', ['ngRoute'])
 
 
         ])
-.factory('State', [
-            '$http'
-            ($http)->
-                State={}
-                State.getStates = ->
-                    http={
-                        url: '/states'
-                        method: 'get'
-                    }
-                    $http(http)
+
+.factory('State',[
+            'STATE'
+            (STATE)->
+                State = {}
+                State.getStates = (contractor)->
+                    STATE.map (value) ->
+                        if value in contractor.states
+                            name: value
+                            ticked: true
+                        else
+                            name: value
+                State.statesToArray = (states)->
+                    aStates = []
+                    aStates.push state.name for state in states when state.ticked == true
+                    aStates
                 State
         ])

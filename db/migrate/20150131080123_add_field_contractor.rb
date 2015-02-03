@@ -13,7 +13,6 @@ class AddFieldContractor < ActiveRecord::Migration
     add_column :contractors, :qualifications, :text
     add_column :contractors, :dob, :date
     add_column :contractors, :industry_id, :integer
-    add_column :contractors, :state_id, :integer
     add_column :contractors, :found_us, :text
   end
 end
