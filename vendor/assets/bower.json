@@ -4,6 +4,7 @@
     "angular": "latest",
     "bootstrap    ": "latest",
     "ng-token-auth": "latest",
-    "angular-route": "latest"
+    "angular-route": "latest",
+    "angular-multi-select": "latest"
   }
 }

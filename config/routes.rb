@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resources :contractors
+  get '/states', to:'states#index'
   get '/contractor', to: 'contractors#show'
   mount_devise_token_auth_for 'User', at: '/auth', controllers: {
                                         sessions:  'overrides/sessions'

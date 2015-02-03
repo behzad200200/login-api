@@ -37,8 +37,9 @@ angular.module('myApp.profile', ['ngRoute'])
 .controller('EditProfileController',[
             '$scope',
             'contractorService',
-            '$location'
-            ($scope, contractorService, $location)->
+            '$location',
+            'State'
+            ($scope, contractorService, $location, State)->
                 $scope.contractor = {}
                 contractorService.checkContractor($scope.user)
                 .success((resp)->
@@ -47,7 +48,12 @@ angular.module('myApp.profile', ['ngRoute'])
                 .error((resp)->
                     $location.path('/new_profile')
                 )
-
+                console.log(State)
+                State.getStates()
+                .success((resp)->
+                    $scope.states = resp.states
+                    console.log($scope.states)
+                )
                 $scope.updateProfile = (contractor)->
                     contractorService.updateContractor(contractor)
                     .success((resp)->
@@ -105,4 +111,15 @@ angular.module('myApp.profile', ['ngRoute'])
 
 
         ])
-.factory()
+.factory('State', [
+            '$http'
+            ($http)->
+                State={}
+                State.getStates = ->
+                    http={
+                        url: '/states'
+                        method: 'get'
+                    }
+                    $http(http)
+                State
+        ])

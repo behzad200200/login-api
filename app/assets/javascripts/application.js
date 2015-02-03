@@ -16,6 +16,7 @@
 //= require angular-cookie/angular-cookie.js
 //= require ng-token-auth/dist/ng-token-auth.js
 //= require angular-route/angular-route.js
+//= require angular-multi-select/angular-multi-select.js
 //= require_tree ./app/directivies
 //= require_tree .
 

@@ -6,7 +6,8 @@ angular.module('myApp', [
     'ng-token-auth',
     'myApp.view1',
     'myApp.login',
-    'myApp.profile'
+    'myApp.profile',
+    'multi-select'
 ]).
     config(['$routeProvider', function($routeProvider) {
         $routeProvider.otherwise({redirectTo: '/view1'});
