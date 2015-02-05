@@ -7,7 +7,9 @@ angular.module('myApp', [
     'myApp.view1',
     'myApp.login',
     'myApp.profile',
-    'multi-select'
+    'multi-select',
+    'ngBootstrap',
+    'myApp.testDirective'
 ]).
     config(['$routeProvider', function($routeProvider) {
         $routeProvider.otherwise({redirectTo: '/view1'});

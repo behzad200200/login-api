@@ -3,3 +3,5 @@ asset 'bootstrap    '
 asset 'ng-token-auth'
 asset 'angular-route'
 asset 'angular-multi-select'
+asset 'ng-bs-daterangepicker'
+

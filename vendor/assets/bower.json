@@ -5,6 +5,7 @@
     "bootstrap    ": "latest",
     "ng-token-auth": "latest",
     "angular-route": "latest",
-    "angular-multi-select": "latest"
+    "angular-multi-select": "latest",
+    "ng-bs-daterangepicker": "latest"
   }
 }

@@ -4,7 +4,7 @@ class ContractorsController < ApplicationController
     contractor = Contractor.new(contractor_params)
     contractor.user = @user
     if contractor.save
-      render json: contractor
+      render json: contractor.contractor_with_association
     else
       render json: {
           status: 'error',
@@ -15,7 +15,7 @@ class ContractorsController < ApplicationController
 
   def show
     if @user.member.present? && @user .member.is_a?(Contractor)
-      render json: @user.member
+      render json: @user.member.json_response
     else
       render json: {}, status: 404
     end
@@ -27,6 +27,7 @@ class ContractorsController < ApplicationController
 
   def update
     contractor = Contractor.find(params[:id])
+    binding.pry
     if contractor.update(contractor_params)
       render :json => {notice: 'updated successfully'}
     else
@@ -42,10 +43,10 @@ class ContractorsController < ApplicationController
                                        :mobile_phone,
                                        :street,
                                        :suburb,
-                                       user_attributes: [:email,
-                                                         :password,
-                                                         :password_confirmation],
+                                       :state,
+                                       job_roles_attributes: [:id,:title, :start_date, :end_date],
                                        states: [])
+
   end
 
   def set_user
