@@ -27,7 +27,6 @@ class ContractorsController < ApplicationController
 
   def update
     contractor = Contractor.find(params[:id])
-    binding.pry
     if contractor.update(contractor_params)
       render :json => {notice: 'updated successfully'}
     else

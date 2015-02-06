@@ -41,17 +41,18 @@ angular.module('myApp.profile', ['ngRoute'])
             'State'
             ($scope, contractorService, $location, State)->
                 job =
-                    id: 0
+                    id: ''
                     title: 'Ruby On Rails'
-                    start_date: '1'
-                    end_date: '2'
+                    start_date: '2015-04-06'
+                    end_date: '2015-02-06'
 
                 $scope.contractor = {}
                 contractorService.checkContractor($scope.user)
                 .success((resp)->
                     $scope.contractor = resp
                     $scope.states = State.getStates($scope.contractor)
-                    $scope.contractor.job_roles_attributes = [] if !$scope.job_roles_attributes?
+                    $scope
+                    $scope.contractor.job_roles_attributes = [] if !$scope.contractor.job_roles_attributes?
                 )
                 .error((resp)->
                     $location.path('/new_profile')
@@ -66,9 +67,7 @@ angular.module('myApp.profile', ['ngRoute'])
                     )
 
                  $scope.addJobTitle = ->
-                     console.log($scope.contractor.job_roles_attributes.length)
                      temp = JSON.parse(JSON.stringify(job))
-                     temp.id = $scope.contractor.job_roles_attributes.length + 1
                      $scope.contractor.job_roles_attributes.push(temp)
         ])
 .factory('contractorService', [
@@ -100,7 +99,6 @@ angular.module('myApp.profile', ['ngRoute'])
 
                     )
                 checkContractor = (user)->
-                    console.log(user);
                     http={
                         url: "/contractor"
                         method: 'get'

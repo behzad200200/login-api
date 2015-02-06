@@ -35,8 +35,8 @@
                     >
             </multi-select>
         </div>
-        <div class="form-group" ng-repeat="jobrole in contractor.job_roles_attributes track by jobrole.id">
-            <job-data-rang ng-model="jobrole"></job-data-rang>
+        <div class="form-group" ng-repeat="jobrole in contractor.job_roles_attributes track by jobrole.id ">
+            <job-data-rang jobrole="jobrole"></job-data-rang>
         </div>
         <a href ng-click="addJobTitle()" >Add</a>
         <button type="submit" class="btn btn-primary btn-lg">Register</button>

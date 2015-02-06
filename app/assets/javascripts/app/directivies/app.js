@@ -29,7 +29,6 @@ angular.module('myApp', [
             }
         }
         $rootScope.logout = function(){
-            console.log($auth)
             $auth.destroyAccount($rootScope.currentUser);
         }
     }])
