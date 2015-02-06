@@ -4,21 +4,21 @@ angular.module('myApp.view1', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/view1', {
-    templateUrl: '<%= asset_path("users/view1.html") %>',
+    templateUrl: '<%= asset_path('users/registration.html') %>',
     controller: 'View1Ctrl'
   });
 }])
 
-.controller('View1Ctrl', ['$scope', '$auth',function($scope, $auth) {
-        $scope.registrationLogin = {};
-        $scope.register = function(registrationLogin){
-            $auth.submitRegistration(registrationLogin)
-                .then(function (res){
-                    console.log("yessss")
-                })
-                .catch(function (res) {
-                    console.log(res.data)
-                })
+.controller('View1Ctrl', ['$scope', '$auth', '$http', function($scope, $auth, $http) {
+        $scope.user_attributes = {}
+        $scope.register = function(user_attributes){
+            $auth.submitRegistration(user_attributes)
+                    .then(function(){
+                        $auth.submitLogin(user_attributes)
+                    })
+                    .catch(function(res){
+
+                    })
         }
 
 }]);

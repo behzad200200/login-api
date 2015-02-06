@@ -1,0 +1,19 @@
+angular.module('myApp.testDirective', [])
+.directive('jobDataRang', ->
+    templateUrl: '<%= asset_path('shared/jobrole-form.html') %>'
+    restrict: 'E',
+    scope: {
+        jobrole: '='
+    }
+    link: ($scope, $element, $attributes)->
+        $scope.jobDates = {}
+        $scope.jobDates.startDate = moment($scope.jobrole.start_date)
+        $scope.jobDates.endDate = moment($scope.jobrole.end_date)
+        $scope.$watch('jobDates', (value)->
+            $scope.jobrole.start_date = value.startDate._d
+            $scope.jobrole.end_date = value.endDate._d
+        )
+
+
+
+)

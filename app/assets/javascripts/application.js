@@ -16,6 +16,10 @@
 //= require angular-cookie/angular-cookie.js
 //= require ng-token-auth/dist/ng-token-auth.js
 //= require angular-route/angular-route.js
+//= require angular-multi-select/angular-multi-select.js
+//= require moment/moment.js
+//= require bootstrap-daterangepicker/daterangepicker.js
+//= require ng-bs-daterangepicker/src/ng-bs-daterangepicker.js
 //= require_tree ./app/directivies
 //= require_tree .
 

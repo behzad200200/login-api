@@ -5,7 +5,11 @@ angular.module('myApp', [
     'ngRoute',
     'ng-token-auth',
     'myApp.view1',
-    'myApp.login'
+    'myApp.login',
+    'myApp.profile',
+    'multi-select',
+    'ngBootstrap',
+    'myApp.testDirective'
 ]).
     config(['$routeProvider', function($routeProvider) {
         $routeProvider.otherwise({redirectTo: '/view1'});
@@ -25,7 +29,6 @@ angular.module('myApp', [
             }
         }
         $rootScope.logout = function(){
-            console.log($auth)
             $auth.destroyAccount($rootScope.currentUser);
         }
     }])
@@ -42,6 +45,8 @@ angular.module('myApp', [
                         break;
                     case '/login':
                         replaceClass(element, 'login');
+                    case '/edit_profile':
+                        replaceClass(element, 'edit-profile');
                     default :
                         replaceClass(element, 'login');
                 }
@@ -68,4 +73,17 @@ angular.module('myApp', [
                 });
             });
         };
-    }]);
+    }])
+.constant('STATE', [
+        'NSW',
+        'WA',
+        'VIC',
+        'TAS',
+        'NT',
+        'ACT',
+        'QLD',
+        'SA',
+        'Asia',
+        'UK',
+        'US'
+    ])
