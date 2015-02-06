@@ -11,6 +11,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'devise_token_auth'
 gem 'rails', '4.1.8'
+gem 'activeadmin', github: 'activeadmin'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
