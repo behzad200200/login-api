@@ -45,6 +45,8 @@ angular.module('myApp', [
                         break;
                     case '/login':
                         replaceClass(element, 'login');
+                    case '/edit_profile':
+                        replaceClass(element, 'edit-profile');
                     default :
                         replaceClass(element, 'login');
                 }

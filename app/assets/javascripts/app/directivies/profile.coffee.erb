@@ -88,7 +88,6 @@ angular.module('myApp.profile', ['ngRoute'])
                     )
                     contractor
                 setNewContractor = (contractor, user)->
-
                     $http(
                         url: '/contractors'
                         method: 'post'
@@ -117,8 +116,6 @@ angular.module('myApp.profile', ['ngRoute'])
                 setNewContractor: setNewContractor
                 checkContractor: checkContractor
                 updateContractor: updateContractor
-
-
         ])
 
 .factory('State',[
@@ -138,3 +135,5 @@ angular.module('myApp.profile', ['ngRoute'])
                     aStates
                 State
         ])
+
+

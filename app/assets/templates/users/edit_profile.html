@@ -1,31 +1,29 @@
-<div class="col-sm-4 col-sm-offset-2">
+<div class="col-sm-2 col-sm-offset-5">
+    <div class="new-contractor-header">
+        <div class="image-container new-contractor-backgournd"></div>
+    </div>
     <form ng-submit="updateProfile(contractor)" role="form" ng-init="registrationForm = {}">
         <div class="form-group">
-            <label >First Name</label>
-            <input type="text" ng-model="contractor.first_name" required="required" class="form-control"/>
+            <input type="text" ng-model="contractor.first_name" required="required" placeholder="First Name" class="form-control"/>
         </div>
         <div class="form-group">
-            <label>Last Name</label>
-            <input type="text" ng-model="contractor.last_name" required="required" class="form-control"/>
+            <input type="text" ng-model="contractor.last_name" required="required"  placeholder="Last Name" class="form-control"/>
         </div>
         <div class="form-group">
-            <label>Mobile Phone</label>
-            <input type="text" ng-model="contractor.mobile_phone" required="required" class="form-control"/>
+            <input type="text" ng-model="contractor.mobile_phone" required="required" placeholder="Phone" class="form-control"/>
         </div>
         <div class="form-group">
-            <label>Street</label>
-            <input type="text" ng-model="contractor.street" required="required" class="form-control"/>
+            <input type="text" ng-model="contractor.street" required="required" placeholder="Street" class="form-control"/>
         </div>
 
         <div class="form-group">
-            <label>Suburb</label>
-            <input type="text" ng-model="contractor.suburb" required="required" class="form-control"/>
+            <input type="text" ng-model="contractor.suburb" required="required" placeholder="Suburb" class="form-control"/>
         </div>
 
         <div class="form-group">
-            <label>State</label>
-            <input type="text" ng-model="contractor.state" required="required" class="form-control"/>
+            <input type="text" ng-model="contractor.state" required="required" placeholder="State" class="form-control"/>
         </div>
+        <div class="image-container avalibility-lable-background"></div>
         <div class="form-group">
             <multi-select
                     input-model="states"
