@@ -16,7 +16,7 @@ angular.module('myApp', [
     }])
     .config(['$authProvider', function($authProvider){
         $authProvider.configure({
-            apiUrl: ''
+            apiUrl: 'api'
         })
     }])
     .controller('ApplicationController', ['$rootScope','$auth', function($rootScope, $auth){

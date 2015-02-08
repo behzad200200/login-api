@@ -1,12 +1,21 @@
 Rails.application.routes.draw do
+
+  constraints subdomain: /^#{Rails.configuration.admin_subdomain}/ do
+    get '/' => redirect('/admin')
+    devise_for :admin_users, ActiveAdmin::Devise.config
+    ActiveAdmin.routes(self)
+  end
+
+
+    namespace :api, defaults: {format: :json} do
+      mount_devise_token_auth_for 'User', at: '/auth', controllers: {
+                                            token_validations:  'overrides/token_validations'
+                                        }
+      resources :contractors
+      get '/contractor', to: 'contractors#show'
+end
   root to: 'home#index'
 
-  resources :contractors
-  get '/states', to:'states#index'
-  get '/contractor', to: 'contractors#show'
-  mount_devise_token_auth_for 'User', at: '/auth', controllers: {
-                                        sessions:  'overrides/sessions'
-                                    }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

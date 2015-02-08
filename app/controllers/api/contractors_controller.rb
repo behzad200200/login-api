@@ -1,16 +1,20 @@
-class ContractorsController < ApplicationController
+class Api::ContractorsController < Api::ApiController
   before_filter :set_user, only: [:create, :show]
   def create
     contractor = Contractor.new(contractor_params)
     contractor.user = @user
     if contractor.save
-      render json: contractor.contractor_with_association
+      render json: contractor.json_response
     else
       render json: {
           status: 'error',
           errors: contractor.errors
       }
     end
+  end
+
+  def edit
+
   end
 
   def show

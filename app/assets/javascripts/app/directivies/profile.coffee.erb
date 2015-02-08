@@ -18,6 +18,14 @@ angular.module('myApp.profile', ['ngRoute'])
                             $auth.validateUser()
                         ]
                 )
+                .when('/show_profile',
+                    templateUrl: '<%= asset_path('users/show_profile.html') %>'
+                    controller: 'ShowProfileController'
+                    resolve:
+                        auth:['$auth','contractorService', ($auth, contractorService)->
+                            $auth.validateUser()
+                        ]
+                )
         ])
 .controller('NewProfileController', [
             '$auth'
@@ -70,13 +78,19 @@ angular.module('myApp.profile', ['ngRoute'])
                      temp = JSON.parse(JSON.stringify(job))
                      $scope.contractor.job_roles_attributes.push(temp)
         ])
+.controller('ShowProfileController',[
+            '$scope'
+            ($scope)->
+                console.log('sdfsdf')
+                $scope.test = 'dfssdf'
+        ])
 .factory('contractorService', [
             '$http',
             ($http)->
                 newContractor = ->
                     contractor={}
                     http={
-                        url: '/contractors/new'
+                        url: 'api/contractors/new'
                         method: 'GET'
                     }
                     $http(http)
@@ -89,7 +103,7 @@ angular.module('myApp.profile', ['ngRoute'])
                     contractor
                 setNewContractor = (contractor, user)->
                     $http(
-                        url: '/contractors'
+                        url: 'api/contractors'
                         method: 'post'
                         data:
                             contractor: contractor
@@ -99,7 +113,7 @@ angular.module('myApp.profile', ['ngRoute'])
                     )
                 checkContractor = (user)->
                     http={
-                        url: "/contractor"
+                        url: "api/contractor"
                         method: 'get'
                         params:
                             user_id: user.id
@@ -107,7 +121,7 @@ angular.module('myApp.profile', ['ngRoute'])
                     $http(http)
                 updateContractor = (contractor)->
                     $http(
-                        url: "/contractors/#{contractor.id}"
+                        url: "api/contractors/#{contractor.id}"
                         method: 'put'
                         data:
                             contractor: contractor

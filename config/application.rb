@@ -17,6 +17,9 @@ module LoginApi
 
     config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff)$)
 
+    config.admin_subdomain = 'admin'
+
+    config.api_subdomain = 'api'
 
     config.middleware.insert_before 0, "Rack::Cors" do
       allow do
