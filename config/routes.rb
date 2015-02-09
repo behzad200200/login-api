@@ -6,11 +6,8 @@ Rails.application.routes.draw do
     ActiveAdmin.routes(self)
   end
 
-
+    mount_devise_token_auth_for 'User', at: '/auth'
     namespace :api, defaults: {format: :json} do
-      mount_devise_token_auth_for 'User', at: '/auth', controllers: {
-                                            token_validations:  'overrides/token_validations'
-                                        }
       resources :contractors
       get '/contractor', to: 'contractors#show'
 end

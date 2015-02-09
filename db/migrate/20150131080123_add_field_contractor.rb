@@ -9,7 +9,6 @@ class AddFieldContractor < ActiveRecord::Migration
     add_column :contractors, :ideal_position, :text
     add_column :contractors, :salary_expectation_amount, :decimal, :precision => 8, :scale => 2
     add_column :contractors, :salary_expectation_type, :string
-    add_column :contractors, :availability, :json
     add_column :contractors, :qualifications, :text
     add_column :contractors, :dob, :date
     add_column :contractors, :industry_id, :integer

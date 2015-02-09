@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(version: 20150207233649) do
     t.text     "ideal_position"
     t.decimal  "salary_expectation_amount", precision: 8, scale: 2
     t.string   "salary_expectation_type"
-    t.json     "availability"
     t.text     "qualifications"
     t.date     "dob"
     t.integer  "industry_id"
@@ -87,6 +86,12 @@ ActiveRecord::Schema.define(version: 20150207233649) do
     t.date     "start_date"
     t.date     "end_date"
     t.integer  "contractor_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "states", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

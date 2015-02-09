@@ -19,7 +19,7 @@ angular.module('myApp.profile', ['ngRoute'])
                         ]
                 )
                 .when('/show_profile',
-                    templateUrl: '<%= asset_path('users/show_profile.html') %>'
+                    templateUrl: '<%= asset_path('users/show_profile.html.erb') %>'
                     controller: 'ShowProfileController'
                     resolve:
                         auth:['$auth','contractorService', ($auth, contractorService)->

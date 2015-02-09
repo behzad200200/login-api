@@ -11,7 +11,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'devise_token_auth'
 gem 'rails', '4.1.8'
-gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin.git', :branch => 'master'
+gem 'activeadmin', :git => "git://github.com/gregbell/active_admin.git", branch: 'master'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets

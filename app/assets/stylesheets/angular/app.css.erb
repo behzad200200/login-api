@@ -1,5 +1,23 @@
 /* app css stylesheet */
-
+.body-container {
+    padding-top:50px;
+    padding-bottom: 60px;
+    height: 100%;
+    min-height: 100%;
+    position: absolute;
+    min-width: 100%;
+}
+#main-profile{
+    background-color: #F4F4F4;
+}
+#navigation-profile{
+    background-color: #EFEFEF;
+}
+.content-area{
+    height: 100%;
+    overflow: auto;
+    min-height: 100%;
+}
 .menu {
     list-style: none;
     border-bottom: 0.1em solid black;
@@ -147,4 +165,25 @@ code {
 .new-contractor-header{
     height: 30px;
     margin-bottom: 20px;
+}
+.default-image{
+    height: 30px;
+}
+.profile-title-background{
+    background-image: url(<%= asset_data_uri('profile-title.png') %>);
+}
+.profile-board{
+    height: 150px;
+}
+.top-buffer{
+    margin-top: 60px;
+}
+.image-profile-border{
+    border-left: 1px solid #000000;
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+}
+.text-profile-border{
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
 }
