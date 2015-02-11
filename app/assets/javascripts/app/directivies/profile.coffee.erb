@@ -22,8 +22,11 @@ angular.module('myApp.profile', ['ngRoute'])
                     templateUrl: '<%= asset_path('users/show_profile.html.erb') %>'
                     controller: 'ShowProfileController'
                     resolve:
-                        auth:['$auth','contractorService', ($auth, contractorService)->
-                            $auth.validateUser()
+                        contractor: ['$auth','contractorService','$rootScope', ($auth,contractorService)->
+                            return $auth.validateUser().then((user)->
+                                    console.log(user.id)
+                                    contractorService.checkContractor(user);
+                            )
                         ]
                 )
         ])
@@ -74,15 +77,16 @@ angular.module('myApp.profile', ['ngRoute'])
                         $location.path('/profile')
                     )
 
-                 $scope.addJobTitle = ->
-                     temp = JSON.parse(JSON.stringify(job))
-                     $scope.contractor.job_roles_attributes.push(temp)
+                $scope.addJobTitle = ->
+                    temp = JSON.parse(JSON.stringify(job))
+                    $scope.contractor.job_roles_attributes.push(temp)
         ])
 .controller('ShowProfileController',[
             '$scope'
-            ($scope)->
-                console.log('sdfsdf')
-                $scope.test = 'dfssdf'
+            'contractor'
+            ($scope, contractor)->
+                $scope.contractor = contractor.data
+                console.log($scope.contractor)
         ])
 .factory('contractorService', [
             '$http',
